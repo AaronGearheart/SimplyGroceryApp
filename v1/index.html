@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    	<link id="theme-link" rel="stylesheet" href="../css/light.css">
+		<title>Gearheart Studios - Grocery Finder</title>
+		<style>
+      		@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+      		html,
+      		body {
+      		  margin: 0;
+      		  width: 100%;
+      		  overflow-x: hidden;
+      		  scroll-behavior: smooth;
+      		  background-color: var(--ctp-theme-base);
+      		}
+		
+      		* {
+      		  font-family: "Quicksand", sans-serif;
+      		  color: var(--ctp-theme-text)
+      		}
+		
+      		a {
+      		  color: var(--ctp-theme-blue);
+      		}
+		
+      		.locationBtn,
+      		.getLocationBtn,
+      		.runBtn {
+      		  color: var(--ctp-theme-base);
+      		  height: 10%;
+      		  width: 85%;
+      		  border-radius: 0.5em;
+      		  border: 0;
+      		  display: flex;
+      		  align-items: center;
+      		  justify-content: center;
+      		  cursor: pointer;
+      		}
+		
+      		.locationBtn,
+      		.getLocationBtn {
+      		  background: linear-gradient(48.07deg,
+      		      var(--ctp-theme-blue) 0%,
+      		      var(--ctp-theme-red) 67.31%,
+      		      var(--ctp-theme-peach) 100%);
+      		  margin: 0.5em;
+      		  font-size: 1.5rem;
+      		  text-decoration: none;
+      		  font-weight: bolder;
+      		}
+		
+      		@keyframes spiralAnimation {
+      		  0% {
+      		    background-position: 0% 50%;
+      		  }
+      		  25% {
+      		    background-position: 50% 100%;
+      		  }
+      		  50% {
+      		    background-position: 100% 50%;
+      		  }
+      		  75% {
+      		    background-position: 50% 0%;
+      		  }
+      		  100% {
+      		    background-position: 0% 50%;
+      		  }
+      		}
+		
+      		.runBtn {
+      		  margin-top: 1rem;
+      		  background: linear-gradient(48.07deg,
+      		      var(--ctp-theme-blue) 0%,
+      		      var(--ctp-theme-red) 67.31%,
+      		      var(--ctp-theme-peach) 100%);
+      		  background-size: 100% 100%;
+      		  color: white;
+      		  padding: 0.5rem 1rem;
+      		  font-size: 1rem;
+      		  cursor: pointer;
+      		  border: none;
+      		  outline: none;
+      		  transition: background-size 0.5s ease-in-out, background 0.5s ease-in-out;
+      		}
+		
+      		.runBtn.animated {
+      		  background-size: 400% 400%; /* Enlarge background size when animating */
+      		  animation: spiralAnimation 3s infinite linear;
+      		}
+		
+      		.runLink {
+      		  font-size: 1.5rem;
+      		  text-decoration: none;
+      		  font-weight: bolder;
+      		  color: var(--ctp-theme-base);
+      		}
+
+			#privacy {
+			  bottom: 0px;
+      		  right: 0px;
+			  border-top-left-radius: .2em;
+			}
+
+			#credits {
+			  bottom: 0px;
+      		  left: 0px;
+			  border-top-right-radius: .2em;
+			}
+		
+      		#credits, #privacy {
+      		  margin: 0px;
+      		  position: fixed;
+      		  background: linear-gradient(48.07deg,
+      		      var(--ctp-theme-blue) 0%,
+      		      var(--ctp-theme-red) 67.31%,
+      		      var(--ctp-theme-peach) 100%);
+      		  padding: 0em 1em;
+      		  background-clip: padding-box;
+      		}
+		
+      		#credits a, #privacy a {
+      		  color: var(--ctp-theme-base);
+      		  font-weight: bolder;
+      		}
+		
+      		#credits-text, #privacy-text {
+      		  color: var(--ctp-theme-base);
+      		  margin: 0;
+      		  font-family: "Quicksand", sans-serif;
+      		  font-size: 1em;
+      		  text-decoration: none;
+      		}
+		
+      		#locationBtnGrid {
+      		  width: 100%;
+      		  margin: 0;
+      		  padding: 0;
+      		}
+		
+      		#terminal {
+      		  width: 80%;
+      		  font-size: 1.5rem;
+      		  text-decoration: none;
+      		  font-weight: bolder;
+      		  margin-bottom: 1em;
+      		  padding: 0;
+      		}
+		
+      		pre {
+      		  white-space: pre-wrap;
+      		}
+		
+      		#manualZip {
+      		  box-sizing: border-box;
+      		  background-color: var(--ctp-theme-base);
+      		  border: 3px solid;
+      		  border-image: linear-gradient(48.07deg,
+      		      var(--ctp-theme-blue) 0%,
+      		      var(--ctp-theme-red) 67.31%,
+      		      var(--ctp-theme-peach) 100%);
+      		  border-image-slice: 1;
+      		  padding: 10px;
+      		  color: var(--ctp-theme-text);
+      		  font-family: "Quicksand", sans-serif;
+      		  font-size: 1em;
+      		  text-align: center;
+      		}
+		
+      		::placeholder {
+      		  color: var(--ctp-theme-text);
+      		}
+		
+      		#themebtn{
+      		  color: var(--ctp-theme-base);
+      		  background: linear-gradient(48.07deg,
+      		      var(--ctp-theme-blue) 0%,
+      		      var(--ctp-theme-red) 67.31%,
+      		      var(--ctp-theme-peach) 100%);
+      		  border: 0;
+      		  border-bottom-right-radius: 1em;
+      		  padding: .5em;
+      		  margin: 0;
+      		  cursor: pointer;
+      		  top: 0;
+      		  left: 0;
+      		  font-size: 1em
+      		}
+		</style>
+	</head>
+	<body>
+    <button onclick="toggleTheme()" id="themebtn">Toggle Theme</button>
+		<center>
+			<h1>Choose Location</h1>
+			<div id="locationBtnGrid"></div>
+			<button id="getLocationBtn" class="getLocationBtn">
+			Get More Locations
+			</button>
+			<input
+				type="text"
+				id="manualZip"
+				placeholder="(OPTIONAL) ZIPCODE"
+				pattern="[0-9]*"
+				inputmode="numeric"
+				maxlength="5"
+				/>
+			<div style="font-size: 0.75em; padding: 5px">
+				Reverse geocoding powered by
+				<a href="https://www.openstreetmap.org/">OpenStreetMap</a>. Map data
+				available under the
+				<a href="https://opendatacommons.org/licenses/odbl/"
+					>Open Database License (ODbL)</a
+					>
+			</div>
+			<h1>Run Script</h1>
+			<div id="runScript" class="runBtn">
+				<a href="#" id="runScript" class="runLink">Run Script</a>
+			</div>
+			<h2>Script Output</h2>
+			<div id="terminal">
+				<pre id="output">No output yet...</pre>
+			</div>
+		</center>
+		<div id="credits">
+			<p id="credits-text">
+				Powered by
+				<a href="https://gearheartstudios.com" id="credits-text"
+					>Gearheart Studios</a
+					>
+			</p>
+		</div>
+		<div id="privacy">
+			<a id="privacy-text" href="https://gearheartstudios.com/privacy">
+				Privacy Policy
+			</a>
+		</div>
+	</body>
+</html>
